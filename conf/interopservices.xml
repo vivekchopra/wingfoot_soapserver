@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+
+<service name="interoptest">
+
+    <namespace>http://soapinterop.org/</namespace>
+    <classname>com.wingfoot.interop.InteropServices</classname>
+
+    <!-- these are straight array echos -->
+    <method>echoString</method>
+    <method>echoStringArray</method>
+    <method>echoInteger</method>
+    <method>echoIntegerArray</method>
+    <method>echoFloat</method>
+    <method>echoFloatArray</method>
+    <method>echoStruct</method>
+    <method>echoStructArray</method>
+    <method>echoVoid</method>
+    <method>echoBase64</method>
+    <method>echoDate</method>
+    <method>echoHexBinary</method>
+    <method>echoDecimal</method>
+    <method>echoBoolean</method>
+    <method>echoStructAsSimpleTypes</method>
+    <method>echoSimpleTypesAsStruct</method>
+    <method>echoNestedStruct</method>
+    <method>echoNestedArray</method>
+
+    <typemap>
+        <typeNamespace>http://soapinterop.org/xsd</typeNamespace>
+	<qname>SOAPStruct</qname>
+	<type>com.wingfoot.interop.EmployeeBean</type>
+	<Java2XMLClass>com.wingfoot.soap.encoding.BeanSerializer</Java2XMLClass>
+	<XML2JavaClass>com.wingfoot.soap.encoding.BeanSerializer</XML2JavaClass>
+    </typemap>
+
+    <typemap>
+        <typeNamespace>http://soapinterop.org/xsd</typeNamespace>
+	<qname>SOAPStructStruct</qname>
+	<type>com.wingfoot.interop.EmployeeBeanBean</type>
+	<Java2XMLClass>com.wingfoot.soap.encoding.BeanSerializer</Java2XMLClass>
+	<XML2JavaClass>com.wingfoot.soap.encoding.BeanSerializer</XML2JavaClass>
+    </typemap>
+
+    <typemap>
+        <typeNamespace>http://soapinterop.org/xsd</typeNamespace>
+	<qname>SOAPArrayStruct</qname>
+	<type>com.wingfoot.interop.EmployeeBeanNestedArray</type>
+	<Java2XMLClass>com.wingfoot.soap.encoding.BeanSerializer</Java2XMLClass>
+	<XML2JavaClass>com.wingfoot.soap.encoding.BeanSerializer</XML2JavaClass>
+    </typemap>
+    
+    <elementmap>
+        <elementName>inputDate</elementName>
+	<type>java.util.Date</type>
+    </elementmap>
+
+    <elementmap>
+        <elementName>inputBoolean</elementName>
+	<type>java.lang.Boolean</type>
+    </elementmap>
+    <elementmap>
+        <elementName>inputIntegerArray</elementName>
+	<type>java.lang.Integer</type>
+        <isArray>true</isArray>
+    </elementmap>
+</service>
+

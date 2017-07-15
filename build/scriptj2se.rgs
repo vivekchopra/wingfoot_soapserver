@@ -1,0 +1,109 @@
+# ===========================================================================
+#
+# Copyright (c) 1998 Retrologic Systems. All Rights Reserved.
+#
+# This software is the confidential and proprietary information of Retrologic
+# Systems ("Confidential Information"). You shall not disclose such
+# Confidential Information and shall use it only in accordance with the terms
+# of the license agreement you entered into with Retrologic.
+#
+# ===========================================================================
+#
+# This script file is an example of how to preserve class, interface, 
+# method and field names from obfuscation by the RetroGuard Bytecode 
+# Obfuscator. Use it with the BNF grammar for these RetroGuard script
+# (*.rgs) files given in the file 'RgsGrammar.txt'.
+#
+# Included in the forthcoming commercial release of RetroGuard will be 
+# a graphical interface for the simple generation of these script files.
+# For most Java applets and applications the script file will, however, 
+# be very straightforward. For applets, reserve the name of the applet class:
+#
+# .class COM/yourpackage/YourApplet 
+#
+# For applications, reserve the class name and public methods in your 
+# 'main' class:
+#
+# .class COM/yourpackage/YourApplication public method
+#
+# For Java libraries, things can get more complicated. Each of the classes, 
+# interfaces, methods and fields that are to be accessed by users of the 
+# library must be preserved. 
+.class com/wingfoot/soap/encoding/Base64 public 
+.class com/wingfoot/soap/encoding/HexBinary public 
+.class com/wingfoot/soap/encoding/BaseSerializer public 
+.class com/wingfoot/soap/encoding/BeanSerializer public 
+.class com/wingfoot/soap/encoding/WSerializable public 
+.class com/wingfoot/soap/encoding/AbstractSerializer public 
+.class com/wingfoot/soap/encoding/ComplexTypeDeserializer public 
+.class com/wingfoot/soap/encoding/ComplexTypeSerializer public 
+.class com/wingfoot/soap/encoding/LiteralDeserializer public 
+.class com/wingfoot/soap/encoding/LiteralSerializer public 
+.class com/wingfoot/soap/encoding/SectionVDeserializer public 
+.class com/wingfoot/soap/encoding/SectionVSerializer public 
+.class com/wingfoot/soap/encoding/SOAPDeserializer public 
+.class com/wingfoot/soap/encoding/SOAPSerializer public 
+.class com/wingfoot/soap/encoding/SerializerDeserializer public 
+.class com/wingfoot/soap/encoding/TypeDeserializer public 
+.class com/wingfoot/soap/encoding/TypeSerializer public 
+.class com/wingfoot/soap/encoding/TypeMappingRegistry public 
+.class com/wingfoot/soap/encoding/UntypedObject public 
+.class com/wingfoot/soap/Call public 
+.class com/wingfoot/soap/Constants public field
+#.class com/wingfoot/soap/Envelope public 
+.class com/wingfoot/soap/Envelope public 
+.class com/wingfoot/soap/IEnvelope public 
+.class com/wingfoot/soap/LiteralEnvelope public 
+.class com/wingfoot/soap/Fault public 
+.class com/wingfoot/soap/HeaderEntry public 
+.class com/wingfoot/soap/transport/J2SEHTTPTransport public 
+.class com/wingfoot/soap/transport/Transport public 
+.class com/wingfoot/soap/SOAPElement public 
+.class com/wingfoot/soap/SOAPException public 
+.class com/wingfoot/soap/server/DeploymentAdmin public 
+.class com/wingfoot/soap/server/HTTPListener public
+.class com/wingfoot/soap/server/DeploymentException public 
+.class com/wingfoot/soap/server/SOAPRouter public 
+.class com/wingfoot/soap/server/Service public 
+.class com/wingfoot/soap/server/RouterException public 
+.class com/wingfoot/xml/SerializedHolder public method
+#
+# One point to note is that names are specified in the .rgs file using 
+# the syntax of the Java virtual machine, not the syntax of the Java 
+# language. This is because RetroGuard is a general purpose JVM bytecode 
+# obfuscator, and so it is inappropriate to tie its syntax to that of the
+# Java language. In particular, package and class names are separated by 
+# a '/', not a '.' (COM/yourpackage/YourApplet, not COM.yourpackage.YourApplet)
+# Also, when specifying individual methods or fields for preservation,  
+# the JVM syntax for specifying types is used. So a method 'File getFile(int i)' 
+# in an interface 'COM.yourpackage.YourInterface' is preserved using:
+#
+# .method COM/yourpackage/YourInterface/getFile (I)Ljava/io/File;
+#
+# In the commercial release of RetroGuard, a graphical interface will be 
+# provided in order to shield you from this gritty detail. In most cases for a
+# product, you will spend a few minutes writing the '.rgs' script at the
+# beginning of your development cycle, add the obfuscation step to your 
+# daily build procedure, and forget about RetroGuard, secure in the knowledge 
+# that your product's proprietary information will be safe from reverse 
+# compilation. 
+#
+# The single line of script used for the obfuscation of 'retroguard.jar' itself
+# is given below. 
+#
+# -----------------------------------------------------------------------------
+#
+# Use the following to switch off pruning of known attributes
+# .attribute	SourceFile
+# .attribute	LocalVariableTable
+# .attribute	LineNumberTable
+#
+# This exposes the public interfaces of the RetroGuard JAR
+.class RGgui
+.method RGgui/main ([Ljava/lang/String;)V
+.class RGpatch
+.method RGpatch/main ([Ljava/lang/String;)V
+.class RGconv
+.method RGconv/main ([Ljava/lang/String;)V
+.class RetroGuard
+.method RetroGuard/main ([Ljava/lang/String;)V

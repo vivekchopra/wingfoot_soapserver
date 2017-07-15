@@ -1,0 +1,15 @@
+com.wingfoot
+com.wingfoot.registry
+com.wingfoot.soap
+com.wingfoot.soap.encoding
+com.wingfoot.soap.server
+com.wingfoot.soap.transport
+com.wingfoot.tools
+com.wingfoot.wsdl
+com.wingfoot.wsdl.gen
+com.wingfoot.wsdl.soap
+com.wingfoot.xml
+com.wingfoot.xml.schema
+com.wingfoot.xml.schema.gen
+com.wingfoot.xml.schema.groups
+com.wingfoot.xml.schema.types

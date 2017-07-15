@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<service name="test">
+<namespace> http://www.wingfoot.com </namespace>
+<classname> com.wingfoot.soap.interop.InteropClient </classname>
+<method static="false" returnParameterName="return"> method1 </method>
+<method static="false"> method2 </method>
+<method static="true"> method3 </method>
+<typemap>
+<typeNamespace> http://www.wingfoot.com/types </typeNamespace>
+<qname> SOAPStruct </qname>
+<type> com.wingfoot.soap.interop.EmployeeBean </type>
+<Java2XMLClass> com.wingfoot.soap.encoding.BeanSerializer </Java2XMLClass>
+<XML2JavaClass> com.wingfoot.soap.encoding.BeanSerializer </XML2JavaClass>
+</typemap>
+<typemap>
+<typeNamespace> http://www.wingfoot.com/types2 </typeNamespace>
+<qname> SOAPStruct2 </qname>
+<type> com.wingfoot.soap.interop.EmployeeBean2 </type>
+<Java2XMLClass> com.wingfoot.soap.encoding.BeanSerializer2 </Java2XMLClass>
+<XML2JavaClass> com.wingfoot.soap.encoding.BeanSerializer2 </XML2JavaClass>
+</typemap>
+<elementmap>
+<elementName> return </elementName>
+<type> java.lang.String </type>
+<XML2JavaClass> java.lang.String </XML2JavaClass>
+</elementmap>
+<elementmap>
+<elementName> return2 </elementName>
+<type> java.lang.String2 </type>
+<XML2JavaClass> java.lang.String2 </XML2JavaClass>
+</elementmap>
+</service>
+<service name="test">
+<namespace> http://www.kaliyer.com </namespace>
+<classname> com.wingfoot.soap.interop.KalIyer </classname>
+<method static="false"> KalMethod </method>
+</service>

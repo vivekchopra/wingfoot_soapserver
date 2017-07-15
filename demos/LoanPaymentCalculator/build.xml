@@ -1,0 +1,55 @@
+<!--
+  ** Build file for Loan Payment Web Service 
+  -->
+<project name="LoanPaymentCalculator" default="compile" basedir=".">
+  <!-- Configure properties for building the web service -->
+  <property name="src"      value="."/>
+  <property name="build"    value="${basedir}/build"/>
+
+  <!-- Configure properties to access Wingfoot SOAP      -->
+  <!-- verbose=true prints trace messages while performing
+       admin tasks
+    -->
+  <property name="verbose"  value="true"/>
+  <!-- Wingfoot SOAP router URL -->
+  <property name="url"        value="http://127.0.0.1:8080/parvus/wserver/"/>
+  <!-- Deployment descriptor file for the Echo Web Service -->
+  <property name="ddfile"     value="loan.wsdlDD.xml"/>
+  <!-- URN for the Echo Web Service -->
+  <property name="serviceURN" value="urn:loan"/>
+
+  <!-- Configure the Wingfoot custom Ant tasks           -->
+  <taskdef name="list"      
+           classname="com.wingfoot.tools.ant.ListServiceAntTask"/>
+  <taskdef name="deploy"    
+           classname="com.wingfoot.tools.ant.DeployServiceAntTask"/>
+  <taskdef name="undeploy"  
+           classname="com.wingfoot.tools.ant.UndeployServiceAntTask"/>
+
+  <!-- Create the build directory structure used by compile -->
+  <target name="init">
+    <mkdir dir="${build}"/>
+  </target>
+ 
+  <!-- Compiles the Web Service code   -->
+  <target name="compile" description="Compile web application" depends="init">
+     <javac srcdir="${src}" destdir="${build}"/>
+  </target>
+
+  <!-- Lists all deployed Web Services -->
+  <target name="list" description="List all web applications">
+    <list url="${url}" verbose="${verbose}"/>
+  </target>
+
+  <!-- Deploys the Echo Web Service    -->
+  <target name="deploy" description="Deploy web service"
+          depends="compile">
+    <deploy url="${url}" DDFile="${ddfile}" verbose="${verbose}"/>
+  </target>
+   
+  <!-- Undeploys the Echo Web Service    -->
+  <target name="undeploy" description="Undeploy web service">
+    <undeploy url="${url}" serviceURN="${serviceURN}" verbose="${verbose}"/>
+  </target>
+ 
+</project>

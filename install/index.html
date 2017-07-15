@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Wingfoot Parvus: Enterprise Solutions</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META 
+content="Web Services, SOAP, UDDI, XML, .NET, mobile, Personal Java, WSDL, KVM, Sun, J2ME, MIDP, CLDC, HTML, Web browser, XHTML, DOM, Java, handheld, phone,cellphone, BlackBerry, RIM, PDA, Palm, HTML widget, library, component, toolkit, JDBC, java.sql, database, POP3, SMTP, IMAP, package, class, Oracle, Microsoft, Sybase, IBM, Informix, MySQL, PostgreSQL, SQL" 
+name=keywords><LINK href="images/wingfoot.css" type=text/css 
+rel=stylesheet>
+<META content="MSHTML 5.50.4807.2300" name=GENERATOR></HEAD>
+<BODY text=#000000 bgColor=#ffffff leftMargin=0 topMargin=0 marginwidth="0" 
+marginheight="0">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD bgColor=#ff6633><IMG height=10 src="images/spacer.gif"></TD></TR>
+  <TR>
+    <TD width="100%" bgColor=#ff6633>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" align=left border=0>
+        <TBODY>
+        <TR>
+              <TD align=left><IMG src="images/title.gif" width="422" height="66"></TD>
+          <TD align=right>
+            <TABLE cellSpacing=0 cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                      <TD><IMG src="images/pda_frame.gif" width="150" height="85"></TD>
+                <TD><IMG src="images/phone_frame.gif"> </TD>
+                <TD><IMG src="images/spacer.gif" 
+            width=10></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD bgColor=#ff6633><IMG height=10 src="images/spacer.gif"></TD></TR>
+  <TR bgColor=#cccccc>
+    <TD><IMG height=3 src="images/spacer.gif"></TD></TR>
+  <TR bgColor=#cccccc>
+    <TD><IMG height=3 src="images/spacer.gif"></TD></TR>
+    <TR> 
+      <TD width="100%"> <p class=text>&nbsp;</p>
+        <p class=text><strong>Installing the Parvus SOAP engine</strong></p>
+        <p class=text>The first step for installation is to copy the <em>parvus</em> 
+          web application from the <em>webapps</em> directory into the appropriate 
+          location for your servlet container (eg. Tomcat). Next, we restart the 
+          servlet container in order to have the parvus web application loaded.</p>
+        <p class=text>Now browse over to the default URL <strong><em>http://localhost:8080/parvus/wserver</em></strong> 
+          to verify the installation. Here <em>localhost</em> and <em>8080</em> 
+          are the host and port number that Tomcat runs on- this might be different 
+          in your installation. </p>
+        <p class=text>There are some configuration parameters that may need to 
+          be tuned in the <em>wingfoot.properties</em> files. Edit the <em>CATALINA_HOME/webapps/parvus/WEB-INF/classes/wingfoot.properties</em> 
+          file (for Tomcat- this maybe be at a different location for your servlet 
+          container) and modify as required. The configurable parameters in this 
+          file are:</p>
+        <blockquote>
+          <p class="text">&#8226;deploymentFile: This is the file that contains 
+            persistent data identifying the services already deployed. Change 
+            this to the absolute path of a file. The permissions of the file and 
+            directory should be such that only the Tomcat user can read and modify 
+            this file. </p>
+          <p class="text"><br>
+            &#8226; logger: This is the file where parvus logs the payload it 
+            send/receives. Since the log files are not rolled, set this to a location 
+            with some amount of space. The size of the log files should also be 
+            monitored periodically. In case this parameter is missing, logging 
+            is turned off.</p>
+          <p class="text"> All the paths must be absolute.</p>
+        </blockquote>
+        <p class=text>Once these parameters have been modified, your servlet container 
+          (or the parvus web application) should be restarted for them to take 
+          effect.</p>
+        <p class=text>See the <a href="doc/Parvus_User_Guide.html">Parvus User 
+          Guide</a> for additonal information.</p>
+        <p class=text>&nbsp;</p></TD>
+  </TR>
+  <TR>
+      <TD class=smalltext align=middle> <P align="right" class=smalltext>&nbsp;</P>
+        <P align="center" class=smalltext>Copyright (c) Wingfoot Software. All 
+          Rights Reserved. </P>
+      </TD></TR></TBODY></TABLE>
+</BODY></HTML>

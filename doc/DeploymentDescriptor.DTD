@@ -1,0 +1,52 @@
+<!ELEMENT service ( namespace, classname, method+, typemap*, elementmap*)>
+
+<!ATTLIST service
+          name  #REQUIRED
+>
+
+<!ELEMENT namespace (#PCDATA)>
+<!ELEMENT classname (#PCDATA)>
+<!ELEMENT method (#PCDATA)>
+
+<!ELEMENT typemap (typeNamespace, qname, type, Java2XMLClass, XML2JavaClass)>
+
+<!ELEMENT typeNamespace (#PCDATA)>
+<!ELEMENT qname (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT Java2XMLClass (#PCDATA)>
+<!ELEMENT XML2JavaClass (#PCDATA)>
+
+<!ELEMENT elementmap (elementName, type, XML2JavaClass?)>
+
+<!ELEMENT elementName (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT isArray (#PCDATA)>
+<!ELEMENT XML2JavaClass (#PCDATA)>
+
+
+<!--
+    Sample deployment descriptor
+    <?xml version="1.0">
+    <!DOCTYPE service SYSTEM "DTD/DeploymentDescriptor.DTD">
+ 
+    <service name=test>
+        <namespace> http://www.wingfoot.com </namespace>
+	<classname> com.wingfoot.soap.interop.InteropClient </classname>
+	<method> method1 </method>
+	<method> method2 </method>
+	<method> method3 </method>
+        <typemap>
+	     <typeNamespace> http://www.wingfoot.com/types </typeNamespace>
+	     <qname> SOAPStruct </qname>
+	     <type> com.wingfoot.soap.interop.EmployeeBean </type>
+	     <Java2XMLClass> com.wingfoot.soap.encoding.BeanSerializer </Java2XMLClass>
+	     <XML2JavaClass> com.wingfoot.soap.encoding.BeanSerializer </XML2JavaClass>
+        </typemap>
+        
+	<elementmap>
+	     <elementName> return </elementName>
+	     <type> java.lang.String </type>
+	     <isArray> true </isArray>
+	</elementmap>
+    </service>
+-->

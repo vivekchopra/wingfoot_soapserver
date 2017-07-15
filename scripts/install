@@ -1,0 +1,75 @@
+#! /bin/sh
+#
+# Install Script
+#
+
+RETVAL=0
+
+if test -z ${WINGFOOT_HOME} 
+    then
+    echo "Please set your WINGFOOT_HOME variable"
+    echo "For bash/bourne, the command is: export WINGFOOT_HOME=/PATH/TO/WINGFOOT"
+    echo "For tcsh, the command is: setenv WINGFOOT_HOME /PATH/TO/WINGFOOT"
+    exit ${RETVAL}
+fi
+
+TMP=/tmp
+SOURCE_CONF_FILE=${WINGFOOT_HOME}/conf/wingfoot.properties
+TARGET_CONF_FILE=${TMP}/wingfoot/WEB-INF/classes/wingfoot.properties
+UNITTEST=example.jar
+SERVERNAME=wsoapServer.jar
+ADMINNAME=deploymentAdmin.jar
+WARNAME=wingfoot.war
+WEBXML=web.xml
+
+echo "Enter the location to install the wingfoot.war file"
+read WARLOCATION
+echo ""
+echo "Enter the location to install the Wingfoot logger"
+read LOGGER
+
+if test -z "$WARLOCATION" || test -z "$LOGGER"
+    then
+    echo "Not all the directories were passed"
+    exit ${RETVAL}
+fi
+
+if test ! -d ${TMP}/wingfoot
+    then
+    mkdir ${TMP}/wingfoot
+    mkdir ${TMP}/wingfoot/WEB-INF
+    mkdir ${TMP}/wingfoot/WEB-INF/lib
+    mkdir ${TMP}/wingfoot/WEB-INF/classes
+    mkdir ${TMP}/wingfoot/images
+else
+    if test -e ${TMP}/wingfoot/WEB-INF/classes/wingfoot.properties
+	then
+	rm -r ${TMP}/wingfoot/WEB-INF/classes/*
+    fi
+fi
+
+echo "Creating wingfoot.properties file..."
+
+DEPLOYMENTFILE="${WINGFOOT_HOME}/lib"
+dLocation=$(echo $DEPLOYMENTFILE | sed -e 's/\//\\\//g') #massage the entered data
+logLocation=$(echo $LOGGER | sed 's/\//\\\//g') #massage the entered data
+
+sed  -e 's/$DEPLOYMENT_FILE_LOCATION/'$dLocation'/' -e 's/$LOGGER_LOCATION/'$logLocation'/'  ${SOURCE_CONF_FILE} >> ${TARGET_CONF_FILE}
+
+echo "Copying web.xml file..."
+
+cp ${WINGFOOT_HOME}/conf/${WEBXML} ${TMP}/wingfoot/WEB-INF/${WEBXML}
+
+echo "Copying ${SERVERNAME}..."
+cp ${WINGFOOT_HOME}/lib/${SERVERNAME} ${TMP}/wingfoot/WEB-INF/lib/${SERVERNAME}
+cp ${WINGFOOT_HOME}/lib/${ADMINNAME} ${TMP}/wingfoot/WEB-INF/lib/${ADMINNAME}
+cp ${WINGFOOT_HOME}/lib/${UNITTEST} ${TMP}/wingfoot/WEB-INF/lib/${UNITTEST}
+cp ${WINGFOOT_HOME}/doc/index.html ${TMP}/wingfoot/index.html
+
+cd ${TMP}/wingfoot
+jar -cf ${WARNAME} .
+mv ${WARNAME} ${WINGFOOT_HOME}/lib
+cp ${WINGFOOT_HOME}/lib/${WARNAME} ${WARLOCATION}/${WARNAME}
+
+echo "The war file has been created and installed in ${WARLOCATION}/${WARNAME}"
+echo "A copy of it is also copied to ${WINGFOOT_HOME}/bin/${WARNAME}"

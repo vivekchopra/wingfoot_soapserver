@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+
+<service name="echounittest">
+
+    <namespace>urn:echo-unittest</namespace>
+    <classname>com.wingfoot.unittestB.UnitTestB</classname>
+
+    <!-- these are straight array echos -->
+    <method>echoStringArray</method>
+    <method>echoIntegerArray</method>
+    <method>echoFloatArray</method>
+    <method>echoByteArray</method>
+    <method>echoShortArray</method>
+    <method>echoLongArray</method>
+    <method>echoDoubleArray</method>
+    <!-- these are 2 dimensional array echos -->
+    <method>echoTwoStringArray</method>
+    <method>echoTwoIntegerArray</method>
+    <method>echoTwoFloatArray</method>
+    <method>echoTwoByteArray</method>
+    <method>echoTwoShortArray</method>
+    <method>echoTwoLongArray</method>
+    <method>echoTwoDoubleArray</method>
+
+    <!-- these will echo hashtables, vectors, and beans -->
+    <method>echoHashtable</method>
+    <method>echoVector</method>
+    <method>echoEmployeeBean</method> 
+    <method>echoDirectorySearch</method> 
+    <typemap>
+        <typeNamespace>http://www.wingfoot.com/xsd</typeNamespace>
+	<qname>DirectoryCategory</qname>
+	<type>com.wingfoot.unittestB.DirectoryCategory</type>
+	<Java2XMLClass>com.wingfoot.soap.encoding.BeanSerializer</Java2XMLClass>
+	<XML2JavaClass>com.wingfoot.soap.encoding.BeanSerializer</XML2JavaClass>
+    </typemap>
+    <typemap>
+        <typeNamespace>http://www.wingfoot.com/xsd</typeNamespace>
+	<qname>SOAPStruct</qname>
+	<type>com.wingfoot.unittestB.EmployeeBean</type>
+	<Java2XMLClass>com.wingfoot.soap.encoding.BeanSerializer</Java2XMLClass>
+	<XML2JavaClass>com.wingfoot.soap.encoding.BeanSerializer</XML2JavaClass>
+    </typemap>
+
+</service>
+

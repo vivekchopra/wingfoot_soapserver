@@ -1,0 +1,87 @@
+#! /bin/sh 
+#
+# A script to administer the Wingfoot Soap Server
+#
+
+RETVAL=0
+
+if test -z ${WINGFOOT_HOME} 
+    then
+    echo "Please set your WINGFOOT_HOME variable"
+    echo "For bash/bourne, the command is: export WINGFOOT_HOME=/PATH/TO/WINGFOOT"
+    echo "For tcsh, the command is: setenv WINGFOOT_HOME /PATH/TO/WINGFOOT"
+    exit ${RETVAL}
+fi
+
+WINGFOOT_HOME=${WINGFOOT_HOME}
+SERVERFILE=${WINGFOOT_HOME}/scripts/serverfile
+CLASSPATH=${WINGFOOT_HOME}/lib/deploymentAdmin.jar
+DEPLOYMENTADMIN=com.wingfoot.soap.server.DeploymentAdmin
+
+# should not need to edit any of the functions below
+
+check(){
+    if test ! -e ${SERVERFILE} 
+	then
+	echo "Enter URL of Wingfoot SOAP Server"
+	read serverlocation
+	echo ${serverlocation} > ${SERVERFILE}
+    else
+	serverlocation=`cat ${SERVERFILE}`
+    fi
+}
+
+list(){
+    if check
+	then
+	SOAPSERVER=${serverlocation}
+    fi
+    java -classpath ${CLASSPATH} ${DEPLOYMENTADMIN} ${SOAPSERVER} list
+}
+
+deploy(){
+    if check
+	then
+	SOAPSERVER=${serverlocation}
+    fi
+
+    echo "Path to the deployment xml file"
+    read XMLPATH
+    java -classpath ${CLASSPATH} ${DEPLOYMENTADMIN} ${SOAPSERVER} deploy ${XMLPATH} 
+    
+}
+
+undeploy() {
+    if check
+	then
+	SOAPSERVER=${serverlocation}
+    fi
+    echo "Enter the namespace of the service to undeploy"
+    read NAMESPACE
+    java -classpath ${CLASSPATH} ${DEPLOYMENTADMIN} ${SOAPSERVER} undeploy ${NAMESPACE}
+
+}
+
+case $1 in
+    deploy)
+	deploy
+	;;
+    undeploy)
+	undeploy
+	;;
+
+    list)
+	list
+	;;
+    
+    usage)
+	echo "usage: wingfootctl [deploy | undeploy | list | usage]"
+	;;
+
+    *)
+	echo "usage: wingfootctl [deploy | undeploy | list | usage]"
+	;;
+
+esac
+
+exit ${RETVAL}

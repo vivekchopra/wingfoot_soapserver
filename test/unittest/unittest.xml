@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+
+<service name="echostring">
+  <namespace>urn:echo-string</namespace>
+  <classname>com.wingfoot.unittest.EchoString</classname>
+  <method>echoString</method>
+  <elementmap> 
+    <elementName>echoString</elementName>
+    <type>java.lang.String</type>
+  </elementmap>
+</service>
+
+<service name="testinterop">
+  <namespace>urn:testinterop</namespace>
+  <classname>com.wingfoot.unittest.TestInterop</classname>
+  <method>testInterop</method>
+</service>
+
+<service name="testinteropB">
+  <namespace>urn:testinteropB</namespace>
+  <classname>com.wingfoot.unittest.TestInteropB</classname>
+  <method>testInteropB</method>
+</service>
+
+<service name="echobyte">
+  <namespace>urn:echo-byte</namespace>
+  <classname>com.wingfoot.unittest.EchoByte</classname>
+  <method>echoByte</method>
+</service>
+
+<service name="echoshort">
+  <namespace>urn:echo-short</namespace>
+  <classname>com.wingfoot.unittest.EchoShort</classname>
+  <method>echoShort</method>
+</service>
+
+<service name="echoint">
+  <namespace>urn:echo-int</namespace>
+  <classname>com.wingfoot.unittest.EchoInt</classname>
+  <method>echoInt</method>
+</service>
+
+<service name="echointarray">
+  <namespace>urn:echo-intarray</namespace>
+  <classname>com.wingfoot.unittest.EchoIntArray</classname>
+  <method>echoIntArray</method>
+</service>
+
+<service name="echolong">
+  <namespace>urn:echo-long</namespace>
+  <classname>com.wingfoot.unittest.EchoLong</classname>
+  <method>echoLong</method>
+</service>
+
+<service name="echofloat">
+  <namespace>urn:echo-float</namespace>
+  <classname>com.wingfoot.unittest.EchoFloat</classname>
+  <method>echoFloat</method>
+</service>
+
+<service name="echodouble">
+  <namespace>urn:echo-double</namespace>
+  <classname>com.wingfoot.unittest.EchoDouble</classname>
+  <method>echoDouble</method>
+</service>
+
+<service name="echoboolean">
+  <namespace>urn:echo-boolean</namespace>
+  <classname>com.wingfoot.unittest.EchoBoolean</classname>
+  <method>echoBoolean</method>
+</service>
+
+<service name="echodate">
+  <namespace>urn:echo-date</namespace>
+  <classname>com.wingfoot.unittest.EchoDate</classname>
+  <method>echoDate</method>
+</service>
+
+<service name="echobase64">
+  <namespace>urn:echo-base64</namespace>
+  <classname>com.wingfoot.unittest.EchoBase64</classname>
+  <method>echoBase64</method>
+</service>
+
+<service name="echohexbinary">
+  <namespace>urn:echo-hexbinary</namespace>
+  <classname>com.wingfoot.unittest.EchoHexBinary</classname>
+  <method>echoHexBinary</method>
+</service>
+

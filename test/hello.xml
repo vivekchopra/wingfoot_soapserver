@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<service name="test">
+<namespace>urn:www.kaliyer.com</namespace>
+<classname>Hello</classname>
+<method>getGreeting</method>
+</service>
